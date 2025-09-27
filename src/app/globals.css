@@ -1,15 +1,28 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap");
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary-100: #6c5aa0;
+  --primary-200: #230871;
+  --primary-300: #6f00ff;
+  --secondary-100: #55cabc;
+  --secondary-200: #00af9a;
+  --secondary-300: #00c3ff;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary-100: var(--primary-100);
+  --color-primary-200: var(--primary-200);
+  --color-primary-300: var(--primary-300);
+  --color-secondary-100: var(--secondary-100);
+  --color-secondary-200: var(--secondary-200);
+  --color-secondary-300: var(--secondary-300);
+  --font-sans: "Cairo", sans-serif;
+  --font-mono: "Geist Mono", monospace;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +35,24 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Cairo", sans-serif !important;
+  direction: rtl;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Cairo", sans-serif !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+div,
+button {
+  font-family: "Cairo", sans-serif !important;
 }
