@@ -14,12 +14,12 @@ export default function Home() {
 
   return (
     <div className="p-10">
-      <div className="h-dvh p-10 grid grid-rows-[auto_1fr_auto] place-items-center border-4 border-white rounded-[80px]">
+      <div className="h-dvh p-10 grid grid-rows-[auto_1fr_auto] place-items-center border-4 border-gray-100 rounded-[80px]">
         {/* Main Title */}
-        <h1 className="text-8xl font-light text-primary-300 mb-6 leading-tight text-center ">
+        <h1 className="text-8xl font-light text-primary-100 mb-6 leading-tight text-center ">
           معًا ضد ألزهايمر
           <br />
-          <span className="font-semibold text-6xl">
+          <span className="font-semibold text-6xl ">
             شارك صورتك لدعم مرضى ألزهايمر ونشر الوعي
           </span>
         </h1>

@@ -1,9 +1,13 @@
 "use client";
 import { createContext, useContext, useEffect, useState, useCallback, ReactNode } from "react";
 
+import { CropData } from "../utils/faceDetection";
+
 export interface Photo {
   id: string;
   dataUrl: string;
+  originalDataUrl?: string;
+  cropData?: CropData;
   timestamp: string;
 }
 
