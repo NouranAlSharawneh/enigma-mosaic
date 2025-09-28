@@ -37,7 +37,7 @@ export default function PhotoGrid() {
   return (
     <div className="absolute inset-0 pointer-events-none">
       <div
-        className="grid w-full h-full gap-1 opacity-70 overflow-hidden rounded-[80px]"
+        className="grid w-full h-full gap-1 opacity-60 overflow-hidden rounded-[80px]"
         style={{
           gridTemplateColumns: `repeat(${columns}, 1fr)`,
         }}

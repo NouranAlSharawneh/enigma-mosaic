@@ -21,7 +21,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${cairo.variable} antialiased`}>
-        <PhotoProvider>{children}</PhotoProvider>
+        <PhotoProvider>
+          <main className="bg-gradient-to-b from-white via-primary-100 to-primary-300">
+            {children}
+          </main>
+        </PhotoProvider>
       </body>
     </html>
   );
