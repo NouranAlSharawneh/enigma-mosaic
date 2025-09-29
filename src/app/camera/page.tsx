@@ -175,7 +175,7 @@ export default function CameraPage() {
             color="#7B4282"
             className="cursor-pointer m-3"
           />
-          <h1 className="text-6xl text-secondary-200">التقط صورتك</h1>
+          <h1 className="text-6xl text-secondary-200">ابتسم وتجهز للصورة!</h1>
           <div className="w-18"></div>
         </div>
 
