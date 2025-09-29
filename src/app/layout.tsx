@@ -9,7 +9,7 @@ const cairo = Cairo({
 });
 
 export const metadata: Metadata = {
-  title: "",
+  title: "Alzheimers Awareness",
   description: "",
 };
 

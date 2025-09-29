@@ -27,7 +27,7 @@ export default function Home() {
         {/* Main Image with Photo Overlay */}
         <div className="w-full relative">
           <Image
-            src="/ribbon_3.png"
+            src="/ribbon_4.png"
             alt="Awarness Ribbon"
             width={1300}
             height={190}
