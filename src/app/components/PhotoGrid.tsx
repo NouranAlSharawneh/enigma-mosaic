@@ -37,7 +37,7 @@ export default function PhotoGrid() {
   return (
     <div className="absolute inset-0 pointer-events-none">
       <div
-        className="grid w-full h-full gap-1 opacity-60 overflow-hidden rounded-[80px]"
+        className="grid w-full h-full gap-1 opacity-55 overflow-hidden rounded-[80px]"
         style={{
           gridTemplateColumns: `repeat(${columns}, 1fr)`,
         }}
@@ -46,7 +46,7 @@ export default function PhotoGrid() {
           {photos.map((photo, index) => (
             <motion.div
               key={photo.id}
-              className="relative w-full h-full overflow-hidden shadow-lg border border-white/40 rounded-sm bg-gray-200"
+              className="relative w-full h-full overflow-hidden shadow-lg border border-neutral-200/60 rounded-sm bg-neutral-100"
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.3 }}

@@ -24,14 +24,14 @@ const Button = ({
 
   const variantClasses = {
     primary:
-      "bg-primary-300 text-white hover:bg-primary-200 active:bg-primary-300",
+      "bg-primary-200 text-white hover:bg-primary-100 active:bg-primary-300",
     secondary:
-      "bg-white text-primary-300 border-2 border-primary-300 hover:bg-primary-50",
+      "bg-white text-primary-200 border-2 border-primary-200 hover:bg-primary-100/10",
     tertiary:
-      "bg-transparent text-primary-300 border-2 border-primary-300 hover:bg-primary-50",
-    link: "bg-transparent text-primary-300",
+      "bg-transparent text-primary-200 border-2 border-primary-200 hover:bg-primary-100/10",
+    link: "bg-transparent text-primary-200",
     default:
-      "bg-gradient-to-b from-purple-400 to-primary-300 text-white transition duration-400 active:from-primary-200 active:to-purple-700",
+      "bg-secondary-200 text-white transition duration-400 active:from-secondary-200 active:to-secondary-300",
   };
 
   const sizeClasses = {

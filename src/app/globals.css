@@ -2,14 +2,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap");
 
 :root {
-  --background: #6f00ff;
+  --background: #C98540;
   --foreground: #171717;
-  --primary-100: #6c5aa0;
-  --primary-200: #230871;
-  --primary-300: #6f00ff;
-  --secondary-100: #55cabc;
-  --secondary-200: #00af9a;
-  --secondary-300: #00c3ff;
+  --primary-100: #E8A968;
+  --primary-200: #C98540;
+  --primary-300: #A66F2E;
+  --secondary-100: #A087A6;
+  --secondary-200: #7B4282;
+  --secondary-300: #5D3361;
+  --neutral-100: #B5B8BA;
+  --neutral-200: #95989A;
+  --neutral-300: #75787A;
 }
 
 @theme inline {
@@ -21,6 +24,9 @@
   --color-secondary-100: var(--secondary-100);
   --color-secondary-200: var(--secondary-200);
   --color-secondary-300: var(--secondary-300);
+  --color-neutral-100: var(--neutral-100);
+  --color-neutral-200: var(--neutral-200);
+  --color-neutral-300: var(--neutral-300);
   --font-sans: "Cairo", sans-serif;
   --font-mono: "Geist Mono", monospace;
 }

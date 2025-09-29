@@ -157,7 +157,7 @@ export default function CameraPage() {
   };
 
   return (
-    <div className="h-dvh bg-primary-300 p-8 flex flex-col">
+    <div className="h-dvh bg-primary-200 p-8 flex flex-col">
       <div
         className="w-full h-full py-6 rounded-2xl flex flex-col relative overflow-hidden"
         style={{
@@ -172,10 +172,10 @@ export default function CameraPage() {
           <LuX
             size={44}
             onClick={handleBack}
-            color="#6f00ff"
+            color="#7B4282"
             className="cursor-pointer m-3"
           />
-          <h1 className="text-6xl text-primary-300">التقط صورتك</h1>
+          <h1 className="text-6xl text-secondary-200">التقط صورتك</h1>
           <div className="w-18"></div>
         </div>
 
