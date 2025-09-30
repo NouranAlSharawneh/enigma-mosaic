@@ -38,6 +38,7 @@ export default function Home() {
         </div>
         {/* Bottom Section */}
         <div className="w-full text-center my-8">
+          <p className="text-2xl text-gray-500 mb-8">Powered by Engima</p>
           <Button
             onClick={handleStart}
             variant="default"

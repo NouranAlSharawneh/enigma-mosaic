@@ -4,10 +4,6 @@ import { useRouter } from "next/navigation";
 import Button from "../components/Button";
 import { LuCamera, LuX } from "react-icons/lu";
 import { usePhotos } from "../../contexts/PhotoContext";
-import {
-  detectFaceAndCrop,
-  initializeFaceDetection,
-} from "../../utils/faceDetection";
 
 export default function CameraPage() {
   const router = useRouter();
@@ -17,7 +13,6 @@ export default function CameraPage() {
   const [stream, setStream] = useState<MediaStream | null>(null);
   const [countdown, setCountdown] = useState<number | null>(null);
   const [isCapturing, setIsCapturing] = useState(false);
-  const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -85,8 +80,6 @@ export default function CameraPage() {
 
     if (!context) return;
 
-    setIsProcessing(true);
-
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
 
@@ -95,61 +88,27 @@ export default function CameraPage() {
     context.drawImage(video, -video.videoWidth, 0);
     context.scale(-1, 1); // Reset transform
 
-    const originalPhotoDataUrl = canvas.toDataURL("image/jpeg", 0.8);
+    const photoDataUrl = canvas.toDataURL("image/jpeg", 0.8);
 
-    try {
-      // Initialize face detection if needed
-      await initializeFaceDetection();
+    const photo = {
+      id: Date.now().toString(),
+      dataUrl: photoDataUrl,
+      timestamp: new Date().toISOString(),
+    };
 
-      // Perform face detection and cropping
-      const faceDetectionResult = await detectFaceAndCrop(originalPhotoDataUrl);
+    // Save photo using PhotoContext (defer to avoid render cycle conflict)
+    setTimeout(() => addPhoto(photo), 0);
 
-      let finalPhoto;
-
-      if (faceDetectionResult.success && faceDetectionResult.croppedDataUrl) {
-        // Use cropped image as main photo if face detection succeeded
-        finalPhoto = {
-          id: Date.now().toString(),
-          dataUrl: faceDetectionResult.croppedDataUrl,
-          originalDataUrl: originalPhotoDataUrl,
-          cropData: faceDetectionResult.cropData,
-          timestamp: new Date().toISOString(),
-        };
-      } else {
-        // Fallback to original image if face detection failed
-        console.log("Face detection failed:", faceDetectionResult.error);
-        finalPhoto = {
-          id: Date.now().toString(),
-          dataUrl: originalPhotoDataUrl,
-          timestamp: new Date().toISOString(),
-        };
-      }
-
-      // Save photo using PhotoContext (defer to avoid render cycle conflict)
-      setTimeout(() => addPhoto(finalPhoto), 0);
-    } catch (error) {
-      console.error("Error processing photo:", error);
-      // Fallback to original image on any error
-      const fallbackPhoto = {
-        id: Date.now().toString(),
-        dataUrl: originalPhotoDataUrl,
-        timestamp: new Date().toISOString(),
-      };
-      setTimeout(() => addPhoto(fallbackPhoto), 0);
-    } finally {
-      setIsProcessing(false);
-
-      // Stop camera stream and reset states
-      if (stream) {
-        stream.getTracks().forEach((track) => track.stop());
-        setStream(null);
-      }
-      setIsCapturing(false);
-      setCountdown(null);
-
-      // Navigate back to home (defer to avoid render cycle conflict)
-      setTimeout(() => router.push("/"), 0);
+    // Stop camera stream and reset states
+    if (stream) {
+      stream.getTracks().forEach((track) => track.stop());
+      setStream(null);
     }
+    setIsCapturing(false);
+    setCountdown(null);
+
+    // Navigate back to home (defer to avoid render cycle conflict)
+    setTimeout(() => router.push("/"), 0);
   };
 
   const handleBack = () => {
@@ -209,30 +168,18 @@ export default function CameraPage() {
                   </div>
                 )}
 
-                {/* Processing Overlay */}
-                {isProcessing && (
-                  <div className="absolute inset-0 bg-black/70 flex items-center justify-center">
-                    <div className="text-center text-white">
-                      <p className="text-2xl font-bold mb-2">
-                        معالجة الصورة...
-                      </p>
-                    </div>
-                  </div>
-                )}
               </div>
 
               {/* Capture Button */}
               <Button
                 onClick={startCountdown}
-                disabled={isCapturing || isProcessing || !stream}
+                disabled={isCapturing || !stream}
                 variant="primary"
                 size="large"
                 className="flex items-center gap-3 !py-8 !px-12"
               >
                 <LuCamera size={32} />
-                {isProcessing
-                  ? "معالجة..."
-                  : isCapturing
+                {isCapturing
                   ? "جاري التصوير..."
                   : "التقط الصورة"}
               </Button>
